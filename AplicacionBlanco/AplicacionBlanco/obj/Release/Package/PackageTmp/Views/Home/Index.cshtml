@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<main role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">Hello, world!</h1>
+            <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+            <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Heading</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Heading</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Heading</h2>
+                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+            </div>
+        </div>
+
+        <hr>
+
+    </div> <!-- /container -->
+    <script>
+        function setearNombre(str) {
+            alert("Hola");
+            $("#livesearch").value = "Hola";
+        }
+        function showResult(str) {
+            /*
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                    document.getElementById("livesearch").innerHTML = this.responseText;
+                    document.getElementById("livesearch").style.border = "1px solid #A5ACB2";
+         
+            }
+            xmlhttp.open("GET", "/AEROPUERTO_API/Buscador/" + str, true);
+            xmlhttp.send();
+            */
+            $.get("/AEROPUERTO_API/Buscador", { id: $("#livesearch").val() }, function (data) {
+                // VACIAMOS EL DropDownList
+                $("#Lista").empty();
+                // AÑADIMOS UN NUEVO label CON EL NOMBRE DEL ELEMENTO SELECCIONADO
+                //$("#SUBTEMAS_id").append("<option value> Seleccionar Subtemas de " + $("#TEMA_id option:selected").text() + " --</option>")
+                $("#Lista").append("<p> Hola </p>")
+                // CONSTRUIMOS EL DropDownList A PARTIR DEL RESULTADO Json (data)
+                $.each(data, function (index, row) {
+                    $("#Lista").append('<p>' + row.NOMBRE+ '</p>')
+                    //$("#Lista").append('<p onclick="alert(' + row.NOMBRE +')"'+ row.NOMBRE + '</p > ') 
+                        //setearNombre(this.value)'>
+                });
+            });
+        }
+    </script>
+    <div>
+        <p onclick="setearNombre(this.innerHTML)"> arturo</p>
+        @*<form action="/AEROPUERTO_API/Buscador">*@
+        <form action="/AEROPUERTO_API/Buscador">
+            <label for="fname">Primer Aeropuerto:</label><br>
+            <input type="text" id="livesearch" name="id" value="" onkeyup="showResult(this.value)"><br>
+            <div id="Lista">
+
+            </div>
+            <label for="fname">Segundo Aeropuerto:</label><br>
+            <input type="text" id="id" name="id2" value="arturo"><br>
+            <input type="submit" value="Submit">
+        </form>
+            </div>
+        </main>

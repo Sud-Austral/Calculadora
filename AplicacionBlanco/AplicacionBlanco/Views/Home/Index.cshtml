@@ -42,6 +42,7 @@
             $("#livesearch").value = "Hola";
         }
         function showResult(str) {
+            //alert(str);
             /*
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function () {
@@ -52,12 +53,14 @@
             xmlhttp.open("GET", "/AEROPUERTO_API/Buscador/" + str, true);
             xmlhttp.send();
             */
+            
             $.get("/AEROPUERTO_API/Buscador", { id: $("#livesearch").val() }, function (data) {
                 // VACIAMOS EL DropDownList
+                //document.getElementById("Lista").empty();
                 $("#Lista").empty();
                 // AÑADIMOS UN NUEVO label CON EL NOMBRE DEL ELEMENTO SELECCIONADO
                 //$("#SUBTEMAS_id").append("<option value> Seleccionar Subtemas de " + $("#TEMA_id option:selected").text() + " --</option>")
-                $("#Lista").append("<p> Hola </p>")
+                //$("#Lista").append("<p> Hola </p>")
                 // CONSTRUIMOS EL DropDownList A PARTIR DEL RESULTADO Json (data)
                 $.each(data, function (index, row) {
                     $("#Lista").append('<p>' + row.NOMBRE+ '</p>')
@@ -65,6 +68,7 @@
                         //setearNombre(this.value)'>
                 });
             });
+            
         }
     </script>
     <div>
