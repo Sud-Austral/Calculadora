@@ -1,0 +1,10 @@
+<p>[xyz-ips snippet="Calculos-distancia"]</p>
+<form method="POST"><span style="font-weight: 600;">Inicio</span><br /><input id="texto1" autocomplete="off" name="inicio" type="text" />
+<p> </p>
+<div id="Lista"> </div>
+<p><span style="font-weight: 600;">Destino</span><br /><input id="texto2" autocomplete="off" name="destino" type="text" /></p>
+<div id="Lista2"> </div>
+<div class="padre"><input class="actualizar" name="actualizar" type="submit" value="Calcular" /><br />
+<p>[hoops name="jquery-estilos."]</p>
+</div>
+</form>
