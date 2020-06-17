@@ -1,0 +1,11 @@
+https://www.enriquejros.com/enlaces-anadir-al-carrito-woocommerce/
+
+http://www.tutiendachula.com/carrito/?add-to-cart=ID&quantity=3
+
+http://www.tutiendachula.com/finalizar-compra/?add-to-cart=ID&quantity=3
+
+
+
+id=botones
+
+class=btn-mrv
