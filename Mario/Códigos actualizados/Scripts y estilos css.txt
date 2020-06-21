@@ -1,0 +1,104 @@
+<script>
+	
+function extraerDato(valor,texto,lista) {
+    document.getElementById(texto).value = valor;
+	jQuery(lista).empty();
+	jQuery(lista).hide();
+}
+
+function mostrarLista(texto, lista){
+	var cont = false;
+	jQuery.get("https://raw.githubusercontent.com/Sud-Austral/Calculadora/master/BaseDatos/airports.dat", { inicio: jQuery(texto).val() }, function (data) {
+	
+			jQuery(lista).empty();
+		
+		
+			var lines = data.split("\n");
+			var value = jQuery(texto).val();
+			var valor = value.toLowerCase();
+		
+			texto2 = texto.replace("#","");
+		
+           jQuery.each(lines, function(n, elem) {
+				var col = elem.split(',"');
+				var column = col[1].replace('"','');
+			   	var columna = column.toLowerCase();
+				
+				
+				if(jQuery(texto).val().length >=2 && columna != valor){
+					if(columna.startsWith(valor)){
+						jQuery(lista).show();
+						
+						//jQuery(lista).append('<option value="' + column + '">');
+						jQuery(lista).append('<p onclick=\'extraerDato("'+ column +'","'+texto2+'","'+lista+'")\'>' + column + '</p>');
+						
+						
+						
+					}
+					
+				}
+				else
+				{
+					jQuery(lista).hide();
+				}
+				
+			});
+		
+		
+		
+			
+	});
+	
+	
+}
+
+jQuery("#texto1").keyup(function(){
+	mostrarLista("#texto1", "#Lista");
+});
+     
+	
+jQuery("#texto2").keyup(function(){
+	lista = mostrarLista("#texto2", "#Lista2");
+	
+}); 
+
+</script>
+
+
+<style>
+	.padre{
+		display : flex;
+		justify-content: start;
+	}
+	
+	.actualizar:hover{
+		background-color : grey;
+	}
+	#Lista, #Lista2{
+		overflow-y : scroll;
+		height : 200px;
+		display : none;
+		
+	}
+	
+	#Lista p,#Lista2 p{
+		margin-bottom : 0.7rem;
+		padding : 2px;
+		
+	}
+	#Lista p:hover,#Lista2 p:hover{
+		background-color : #DCDCDC;
+		cursor : pointer;
+	}
+	.contenedor2{
+		display : flex;
+		
+	}
+	.contenedor2 div{
+		flex-direction : column;
+		justify-content : start;
+		width : 50%;
+		padding : 5%;
+	}
+
+</style>
