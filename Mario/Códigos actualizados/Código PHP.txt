@@ -47,9 +47,9 @@ $distancia = distance($lat1, $lon1, $lat2, $lon2, "K");
 echo "Distancia de ".$_POST['inicio']." a ".$_POST['destino']." :  ".$distancia." Kilómetros  &nbsp; <br><br>";
 
 if(isset($_POST["recorrido"]) && $_POST["recorrido"] == "2"){
-    $Total = (round( $distancia * 0.32 / 1000,0) * intval($_POST["recorrido"])) * intval($_POST["pasajeros"]);
+    $Total = (round( $distancia * 0.32 / 1000,2) * intval($_POST["recorrido"])) * intval($_POST["pasajeros"]);
 }else{
-    $Total = round( $distancia * 0.32 / 1000,0) * intval($_POST["pasajeros"]);
+    $Total = round( $distancia * 0.32 / 1000,2) * intval($_POST["pasajeros"]);
 }
 if(intval($_POST["tipoViaje"]) > 0){
   $Total = $Total * 2;
