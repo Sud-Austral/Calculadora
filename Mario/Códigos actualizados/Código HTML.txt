@@ -1,0 +1,37 @@
+[xyz-ips snippet="calcular-distancia"]
+
+<form method="POST"><span style="font-weight: 600;">Inicio</span>
+<input id="texto1" autocomplete="off" name="inicio" required="" type="text">
+<div id="Lista"></div>
+<span style="font-weight: 600;">Destino</span>
+<input id="texto2" autocomplete="off" name="destino" required="" type="text">
+<div id="Lista2"></div>
+<div class="contenedor2">
+<div><span style="font-weight: 600;">Pasajeros</span>
+<select name="pasajeros">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+</select></div>
+<div><input class="recorrido" checked="checked" name="recorrido" type="radio" value="1"> Solo ida
+<input class="recorrido" name="recorrido" type="radio" value="2"> Ida y vuelta</div>
+</div>
+<span style="font-weight: 600;">Tipo de Viaje</span>
+<select name="tipoViaje">
+<option value="0">Económico</option>
+<option value="1">Negocios</option>
+<option value="2">Primera Clase</option>
+</select>
+<div class="padre"><input class="actualizar" name="actualizar" type="submit" value="Calcular">
+
+[hoops name="jquery-estilos."]
+
+</div>
+</form>
